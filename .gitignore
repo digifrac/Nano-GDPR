@@ -1,0 +1,7 @@
+# Generated consent log - never commit visitor data
+optional-logging/nano-gdpr-log.txt
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp

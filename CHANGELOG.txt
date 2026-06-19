@@ -1,0 +1,11 @@
+Nano GDPR - Changelog
+
+1.0.0 - 2026-06-19
+  First release.
+  - Cookie consent banner and preferences modal.
+  - Saves consent in the browser only (localStorage + cookie). No server, no database.
+  - Gates analytics/marketing scripts until consent is given.
+  - "Cookie settings" link to reopen and change choices.
+  - One-snippet install. No build step. No dependencies.
+  - Optional logging (optional-logging folder) for proof of consent. Needs PHP. Off by default.
+  - MIT licence. Free. No footer link.

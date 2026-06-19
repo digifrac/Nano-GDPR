@@ -1,0 +1,37 @@
+Nano GDPR - Limitations
+
+Read this so there are no surprises later.
+
+
+THE COOKIE BANNER
+  - Works on any website.
+  - Needs no server, no database.
+  - Saves the visitor's choice in their own browser only.
+
+
+THE OPTIONAL LOG (optional-logging folder)
+  - This is only needed if you want a record (proof) of choices.
+  - The files live in the "optional-logging" folder (log.php + .htaccess).
+  - To use it: upload that folder and set logUrl: "optional-logging/log.php".
+  - It needs PHP. Most normal shared hosting has PHP.
+  - It needs an Apache server for the .htaccess to protect the log.
+  - It will NOT work on a pure static host (e.g. GitHub Pages, Netlify).
+  - If the log cannot run, the banner still works fine without it.
+
+
+PROOF OF CONSENT
+  - Browser only (no log) = no proof you can show later.
+  - With the log = a simple record in a text file.
+  - For full, formal proof a database is better, but that adds risk.
+
+
+SECURITY
+  - The .htaccess hides the log file from the public.
+  - log.php only accepts proper values.
+  - Small risk: someone could spam the log. Can be limited later if needed.
+
+
+WHAT IT IS NOT
+  - It is not a full booking or account system.
+  - It does not track or send data anywhere on its own.
+  - It does not need cookies from any third party to work.

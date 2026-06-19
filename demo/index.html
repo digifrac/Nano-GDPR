@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano GDPR — demo</title>
+
+    <!-- 1. Stylesheet -->
+    <link rel="stylesheet" href="../nano-gdpr.css">
+
+    <!-- 2. Config (set BEFORE the script loads) -->
+    <script>
+        window.NanoGDPR = {
+            text: "We use cookies to improve your experience on this site.",
+            privacyUrl: "/privacy-policy",
+            position: "bottom",
+            colors: {
+                bg: "#1a1a2e",
+                text: "#ffffff",
+                accept: "#4CAF50",
+                reject: "#666666",
+                link: "#7ec8e3"
+            }
+            // categories: [...]  // optional — defaults to Analytics + Functional
+        };
+    </script>
+
+    <!-- 3. A GATED analytics script. It will NOT run until the visitor
+         accepts the "analytics" category. Swap in your real GA id. -->
+    <script type="text/plain" data-nano-gdpr="analytics">
+        // Stand-in for Google Analytics / gtag. Only fires after consent.
+        console.log("[demo] analytics script activated — consent granted");
+    </script>
+
+    <!-- 4. The widget -->
+    <script src="../nano-gdpr.js" defer></script>
+
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 720px; margin: 3rem auto; padding: 0 1.25rem; line-height: 1.6; color: #1a1a2e; }
+        h1 { margin-bottom: 0.25rem; }
+        code { background: #f2f2f5; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.9em; }
+        button.link { background: none; border: none; color: #2563eb; text-decoration: underline; cursor: pointer; font: inherit; padding: 0; }
+        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e5e5e5; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <h1>Nano GDPR</h1>
+    <p>Cookie consent for static sites. Zero dependencies, zero database, no server state.</p>
+
+    <p>On first visit the banner appears at the bottom. Choose
+    <strong>Accept All</strong> and open the console — the gated analytics
+    script fires. Choose <strong>Reject All</strong> and it stays dormant.</p>
+
+    <p>Open the browser console to watch the gated script activate.</p>
+
+    <p>Test controls:</p>
+    <ul>
+        <li><button class="link" data-nano-gdpr-open>Cookie settings</button> — reopen preferences (works after dismissing the banner)</li>
+        <li><button class="link" onclick="NanoGDPR.reset()">Reset consent</button> — clear the stored choice and reload to see the banner again</li>
+    </ul>
+
+    <footer>
+        <a href="#" data-nano-gdpr-open>Cookie settings</a> &middot;
+        <a href="/privacy-policy">Privacy Policy</a>
+    </footer>
+</body>
+</html>

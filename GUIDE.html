@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nano GDPR - Guide</title>
+<style>
+  body { font-family: system-ui, Arial, sans-serif; max-width: 760px; margin: 2rem auto;
+         padding: 0 1.25rem; line-height: 1.7; color: #1a1a2e; font-size: 1.12rem; }
+  h1 { font-size: 2rem; margin-bottom: 0.2rem; }
+  h2 { font-size: 1.4rem; margin-top: 2.4rem; border-bottom: 2px solid #eee; padding-bottom: 0.3rem; }
+  .lead { color: #555; }
+  .step { background: #f6f6fb; border-radius: 10px; padding: 1rem 1.3rem; margin: 1rem 0; }
+  .step b { color: #2563eb; }
+  pre { background: #1a1a2e; color: #f4f4f8; padding: 1rem; border-radius: 8px;
+        overflow-x: auto; font-size: 0.95rem; line-height: 1.5; }
+  code { background: #ececf3; padding: 0.1rem 0.35rem; border-radius: 4px; }
+  pre code { background: none; padding: 0; }
+  .note { background: #fff7e6; border-left: 4px solid #f0b400; padding: 0.8rem 1rem; border-radius: 6px; }
+</style>
+</head>
+<body>
+
+<h1>Nano GDPR</h1>
+<p class="lead">Cookie consent for static websites. No database. No server. Free. MIT.</p>
+
+<h2>What it does</h2>
+<p>It shows a cookie banner. The visitor picks Accept or Reject.
+Their choice is saved in their own browser. Your tracking scripts only
+run if they say yes.</p>
+
+<h2>Step 1 - Add it to your page</h2>
+<p>Put the files in a folder called <code>gdpr</code> on your website
+(the same way your shop and blog have their own folder).
+Then pick one option and put it in the page <code>&lt;head&gt;</code>.</p>
+
+<p><b>Option A - set the words on the page.</b> Use this if you want to change
+the text here:</p>
+<div class="step">
+<pre><code>&lt;link rel="stylesheet" href="/gdpr/nano-gdpr.css"&gt;
+
+&lt;script&gt;
+  window.NanoGDPR = {
+    text: "We use cookies to improve your experience.",
+    privacyUrl: "/privacy-policy"
+  };
+&lt;/script&gt;
+
+&lt;script src="/gdpr/nano-gdpr.js" defer&gt;&lt;/script&gt;</code></pre>
+</div>
+
+<p><b>Option B - just the script.</b> One line. The words are set inside the
+file instead:</p>
+<div class="step">
+<pre><code>&lt;script src="/gdpr/nano-gdpr.js" defer&gt;&lt;/script&gt;</code></pre>
+</div>
+
+<p>The banner shows itself. You do not paste any banner code.</p>
+
+<h2>Step 2 - Hold back your tracking scripts</h2>
+<p>This is the important bit. Find your tracking script (like Google
+Analytics). Change <code>type</code> to <code>text/plain</code> and add a
+label. Now it waits for consent.</p>
+
+<p><b>Before</b> (runs straight away - not allowed):</p>
+<pre><code>&lt;script src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"&gt;&lt;/script&gt;</code></pre>
+
+<p><b>After</b> (waits until the visitor says yes):</p>
+<pre><code>&lt;script type="text/plain" data-nano-gdpr="analytics"
+        data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"&gt;&lt;/script&gt;</code></pre>
+
+<p>If your script is inline, just wrap it the same way:</p>
+<pre><code>&lt;script type="text/plain" data-nano-gdpr="analytics"&gt;
+  // your tracking code here
+&lt;/script&gt;</code></pre>
+
+<div class="note">The label <code>analytics</code> matches the Analytics toggle
+in the popup. There is also a <code>functional</code> label. Essential cookies
+are always allowed.</div>
+
+<h2>Step 3 - Add a "Cookie settings" link</h2>
+<p>So people can change their mind later. Put this anywhere, like your footer:</p>
+<pre><code>&lt;a href="#" data-nano-gdpr-open&gt;Cookie settings&lt;/a&gt;</code></pre>
+
+<h2>Optional - keep a record (the log)</h2>
+<p>By default, choices are saved in the visitor's browser only. There is no
+record on your side.</p>
+<p>If you want a record (proof), turn on the log. <b>This needs PHP and Apache
+hosting. It will not work on a pure static host.</b></p>
+<p>1. The <code>optional-logging</code> folder is already inside your
+<code>gdpr</code> folder. It holds <code>log.php</code> and a
+<code>.htaccess</code> file. Just upload it with the rest.</p>
+<p>2. In your settings, add this line:</p>
+<div class="step">
+<pre><code>  logUrl: "/gdpr/optional-logging/log.php"</code></pre>
+</div>
+<p>Now each choice is added to a log file inside that folder. The
+<code>.htaccess</code> file keeps the log private.</p>
+<div class="note">If you do nothing, the log stays off and the banner still
+works fine.</div>
+
+<h2>Settings you can change</h2>
+<ul>
+  <li><code>text</code> - the message in the banner</li>
+  <li><code>privacyUrl</code> - link to your privacy page</li>
+  <li><code>position</code> - <code>"bottom"</code> or <code>"top"</code></li>
+  <li><code>colors</code> - <code>{ bg, text, accept, reject, link }</code></li>
+  <li><code>categories</code> - your own list of toggles</li>
+  <li><code>logUrl</code> - turn on the record log (needs PHP). Leave empty for off.</li>
+</ul>
+
+<h2>Try it</h2>
+<p>Open <code>demo/index.html</code> in a browser. Open the console
+(press F12). Click Accept - the test script runs. Click the Reset button
+to see the banner again.</p>
+
+<h2>Where is the data?</h2>
+<p>Only in the visitor's browser. Nothing is sent anywhere. There is no
+server, no database, no login, nothing to hack.</p>
+
+<hr style="margin-top:3rem;border:none;border-top:1px solid #eee;">
+<p style="color:#888;font-size:0.95rem;">Nano GDPR 1.0.0 - MIT licence -
+built by Digital Fracture.</p>
+
+</body>
+</html>
