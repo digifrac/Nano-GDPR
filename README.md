@@ -1,10 +1,15 @@
 # Nano GDPR
 
-Cookie consent for static sites. Zero dependencies, zero database, no server
-state, nothing to attack. Consent lives only in the visitor's own browser
-(localStorage plus a mirror cookie). Gated scripts do not run until the matching
-category is accepted, which is what makes this genuinely compliant rather than a
-cosmetic banner.
+**100% free, forever. No cost, no account, no catch.**
+
+Cookie consent for static sites. No database, no server, no tracking, no price
+tag. Drop in two files and you are done. MIT licensed, so it is free to use on
+any site, including client work, with nothing to pay and no strings attached.
+
+Zero dependencies, zero database, no server state, nothing to attack. Consent
+lives only in the visitor's own browser (localStorage plus a mirror cookie).
+Gated scripts do not run until the matching category is accepted, which is what
+makes this genuinely compliant rather than a cosmetic banner.
 
 Part of the Nano suite. Drop it into any HTML page: one stylesheet, one config
 block, one script. No build step, no server, no framework.
