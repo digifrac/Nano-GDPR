@@ -49,7 +49,7 @@
         privacyLabel: 'Privacy Policy',
         position:     'bottom',            // 'bottom' | 'top'
         colors:       {},                  // bg, text, accept, reject, link
-        logUrl:       '',                  // optional. Set to 'log.php' to save a record
+        logUrl:       '',                  // optional. e.g. '/gdpr/optional-logging/log.php' to save a record
         categories: [
             { id: 'analytics',  label: 'Analytics',  description: 'Helps us understand how visitors use the site (e.g. page views, traffic sources).' },
             { id: 'functional', label: 'Functional', description: 'Enables enhanced features such as live chat, embedded videos, and social sharing.' }
