@@ -1,6 +1,10 @@
 # Generated consent log - never commit visitor data
 optional-logging/nano-gdpr-log.txt
 
+# Build outputs (zips are attached to releases, not committed)
+dist/
+.stage/
+
 # OS / editor junk
 .DS_Store
 Thumbs.db
