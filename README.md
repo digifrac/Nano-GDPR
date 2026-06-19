@@ -2,6 +2,8 @@
 
 **100% free, forever. No cost, no account, no catch.**
 
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/digitalfracture)
+
 Cookie consent for static sites. No database, no server, no tracking, no price
 tag. Drop in two files and you are done. MIT licensed, so it is free to use on
 any site, including client work, with nothing to pay and no strings attached.
@@ -154,6 +156,13 @@ logging off. See `LIMITATIONS.txt` for the full trade-off.
 
 Open `demo/index.html` in a browser. Use the console to watch the gated script
 activate on Accept and stay dormant on Reject.
+
+## Support this project
+
+Nano GDPR is free and always will be. If it saved you time or money, you can
+say thanks with a coffee. Every little bit helps keep the Nano tools free.
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/digitalfracture)
 
 ## Licence
 
