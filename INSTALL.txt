@@ -1,0 +1,57 @@
+NANO GDPR - INSTALL
+===================
+
+Uploading the files is not the whole job. The banner only appears once you
+add a few lines to your web page. The banner injects itself, so there is no
+banner HTML to paste, just the three lines below.
+
+STEP 1: UPLOAD
+--------------
+Put the "gdpr" folder at the top level of your website, so the files are
+reachable at:
+
+    https://yoursite.com/gdpr/
+
+STEP 2: ADD THESE LINES TO YOUR PAGE <head>
+-------------------------------------------
+Paste this into the <head> of your page. If your site uses a shared header
+include, put it there once so it appears on every page.
+
+    <link rel="stylesheet" href="/gdpr/nano-gdpr.css">
+    <script>
+      window.NanoGDPR = {
+        text: "We use cookies to improve your experience on this site.",
+        privacyUrl: "/privacy-policy"
+      };
+    </script>
+    <script src="/gdpr/nano-gdpr.js" defer></script>
+
+Change privacyUrl to your real privacy page. That is the whole install.
+
+STEP 3 (IMPORTANT): HOLD BACK TRACKING SCRIPTS
+----------------------------------------------
+A consent banner is only lawful if the cookies it asks about do not fire
+until the visitor agrees. Take any analytics or marketing script, change its
+type to text/plain, and tag it with a category. It then waits for consent.
+
+    <script type="text/plain" data-nano-gdpr="analytics"
+            data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
+
+The script runs only after the visitor accepts the "Analytics" category.
+
+STEP 4: A "COOKIE SETTINGS" LINK (so people can change their mind)
+-----------------------------------------------------------------
+Put this anywhere, for example in your footer:
+
+    <a href="#" data-nano-gdpr-open>Cookie settings</a>
+
+THAT IS IT
+----------
+The banner shows on the first visit. Once a choice is made it is remembered
+and will not show again. While testing, run NanoGDPR.reset() in the browser
+console to clear the choice and see the banner again.
+
+More detail is in GUIDE.html and README.md, or online at:
+https://github.com/digifrac/Nano-GDPR
+
+Nano GDPR is free and MIT licensed. Built by Digital Fracture.
