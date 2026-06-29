@@ -5,6 +5,9 @@ optional-logging/nano-gdpr-log.txt
 dist/
 .stage/
 
+# Bespoke per-site themed builds - kept local, never published
+df-gdpr/
+
 # OS / editor junk
 .DS_Store
 Thumbs.db
